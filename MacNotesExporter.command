@@ -1,8 +1,13 @@
--- Export Notes.app data to a single HTML file.
---
--- Usage Example:
--- sqlite3 <export.sql >Notes.html \
---         ~/Library/Containers/com.apple.Notes/Data/Library/Notes/NotesV6.storedata
+#!/bin/bash
+
+set -e
+
+export PATH='/usr/bin:/bin:/usr/sbin:/sbin'
+
+dir=$(dirname -- "$0")
+
+sqlite3 ~/Library/Containers/com.apple.Notes/Data/Library/Notes/NotesV6.storedata \
+> "${dir}/Notes.html" 2>&1 <<'EOT'
 
 SELECT PRINTF('<!DOCTYPE html>
 <html>
@@ -80,7 +85,7 @@ WITH
 SELECT
         PRINTF('
 <div class="note" id="%d">
-  <div class="title">%s - %s</div>
+  <div class="title"><span class="folder-name">%s</span> - <span class="note-title">%s</span></div>
   <div class="content">%s</div>
 </div>',
                 note.id, folder.name, note.title,
@@ -92,3 +97,5 @@ JOIN folder ON note.fid = folder.id
 ;
 
 SELECT PRINTF('</body></html>');
+
+EOT

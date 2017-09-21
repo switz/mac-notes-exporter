@@ -2,13 +2,8 @@
 
 Your last straw to save your data from Notes.app.
 
-Usage example:
+Just click and open the program `MacNotesExporter.command`.
 
-Use it in your terminal:
+The result is saved in a file named `Notes.html` beside the program.
 
-```sh
-sqlite3 <export.sql >Notes.html \
-        ~/Library/Containers/com.apple.Notes/Data/Library/Notes/NotesV6.storedata
-```
-
-[SQLite3 Command-line Shell Program](https://www.sqlite.org/download.html)
+This program does not export the attachments in your notes.
