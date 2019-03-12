@@ -6,7 +6,7 @@ export PATH='/usr/bin:/bin:/usr/sbin:/sbin'
 
 dir=$(dirname -- "$0")
 
-sqlite3 ~/Library/Containers/com.apple.Notes/Data/Library/Notes/NotesV6.storedata \
+sqlite3 ~/Library/Containers/com.apple.Notes/Data/Library/Notes/NotesV7.storedata \
 > "${dir}/Notes.html" 2>&1 <<'EOT'
 
 SELECT PRINTF('<!DOCTYPE html>
